@@ -2,7 +2,7 @@
 import { useQuery } from 'react-query';
 
 const fetchData = async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+  const response = await fetch('https://randomuser.me/api/');
   const data = await response.json();
   return data;
 };
@@ -15,7 +15,8 @@ const DataFetchingComponent = () => {
 
   return (
     <div>
-      <h1>Task: <br/> <span>{data.title}</span></h1>
+      <h1>Name: <br/> <span>{`${data.results[0].name.first} ${data.results[0].name.last}`}</span></h1>
+      <img src={data.results[0].picture.large} alt={data.results[0].name.first} />
     </div>
   );
 };
